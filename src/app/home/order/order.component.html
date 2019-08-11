@@ -1,0 +1,47 @@
+<ng-container *ngIf="orderFlag">
+  <div *ngFor="let item of customerOrder" style="width:100%; text-align: center;cursor: pointer;padding-top:21px;">
+    <table>
+      <tr>
+        <td>
+          <h3> {{item.orderNo | json}}</h3>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <h3> {{item.orderName | json}}</h3>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <h3> {{item.orderDetails | json}}</h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="customerDetailsFlag">
+  <div *ngFor="let item of customerDetailsData"
+    style="width:100%; text-align: center;cursor: pointer;padding-top:21px;">
+    <table>
+      <tr>
+        <td>
+          <h3> {{item.personName | json}}</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3> {{item.email | json}}</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3> {{item.city | json}}</h3>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>

@@ -1,0 +1,33 @@
+<amexio-row>
+  <amexio-column style="cursor: pointer" size="4" fit="false">
+    <h2> Customer Name </h2>
+    <ng-container *ngFor="let custmerData of listOfCustomer.data">
+      <table style="width:100%">
+        <tr>
+          <td *ngFor="let item of custmerData.customerDetails">
+            <h3 style="text-align: center" (click)="onNameClick(custmerData)">{{item.personName}}</h3>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+
+  </amexio-column>
+  <amexio-column size="4" fit="false"> 
+    
+    <ng-container >
+      <options [optionsData]="orderData"></options>
+    </ng-container>
+
+
+  </amexio-column>
+  <amexio-column
+  size="4"
+  fit="false">
+
+  <ng-container > 
+      <order ></order>
+  </ng-container>
+</amexio-column>
+
+
+</amexio-row>

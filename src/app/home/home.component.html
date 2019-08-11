@@ -1,0 +1,19 @@
+<amexio-nav [title]="'Cutomer Info'" [enable-side-nav-position]="true" [logo]="'assets/image/in.png'">
+</amexio-nav>
+
+<amexio-row>
+  <amexio-column [size]="'2pt5'" style="padding-top: 68px;">
+    <amexio-side-nav [http-url]="'assets/data/dashSideBar.json'" [http-method]="'get'" [data-reader]="'data'"
+      [height]="'92%'" (nodeClick)="onNodeClick($event)">
+    </amexio-side-nav>
+  </amexio-column>
+
+  <amexio-column [size]="'9pt5'" style=" padding-top: 68px;">
+    <button style="color: blue" (click)="onButtonClick()" >
+      <i class="fa fa-plus  "></i>
+    </button>
+    <router-outlet></router-outlet>
+
+  </amexio-column>
+
+</amexio-row>

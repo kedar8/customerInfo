@@ -1,0 +1,13 @@
+
+.login-page {
+    min-width: 300px;
+     min-height:360px;
+     margin-right: 100px; 
+}
+.login-page-column-css {
+    font-size:2em;
+    margin-top:20px;
+}
+.login-page-div {
+    padding-top: 10%;
+}

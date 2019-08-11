@@ -1,0 +1,19 @@
+
+
+{
+  "data": [
+    {
+      "text": "Dashboard",
+      "icon":"fa fa-tachometer",
+      "link": "home/dashboard",
+      "select": true
+    },
+    {
+      "text": "Customer",
+      "icon":"fa fa-user-circle-o",
+      "link": "home/customer",
+      "select": true
+    }
+  ]
+  }
+   
