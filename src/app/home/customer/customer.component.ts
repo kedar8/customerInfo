@@ -20,90 +20,15 @@ export class CustomerComponent implements OnInit {
   constructor(private router: Router, private _CommonData: CommonDataService) {
 
     this.listOfCustomer = {
-      "data": [
-        {
-          "customerDetails": [
-            {
-              "personName": "Kailas joshi",
-              "selected": false,
-              "city": "pune",
-              "email": "kailas@gmail.com",
-
-            }
-          ],
-          "order": [
-            {
-              "orderNo": 'A111',
-              "orderName": 'Bag',
-              "orderDetails": ' Sky Bag'
-            }
-          ]
-        },
-        {
-          "customerDetails": [
-            {
-              "personName": "Pooja kokil",
-              "email": "Pooja@gmail.com",
-              "city": "kolhapur",
-
-              "selected": false,
-            }
-          ],
-          "order": [
-            {
-              "orderNo": 'A222',
-              "orderName": 'Bike',
-              "orderDetails": ' Pulsar Bag'
-            }
-          ]
-        },
-        {
-          "customerDetails": [
-            {
-
-              "personName": "Kalyani kasar",
-              "email": "Kalyani@gmail.com",
-              "city": "satara",
-              "selected": false,
-            }
-          ],
-          "order": [
-            {
-              "orderNo": 'A333',
-              "orderName": 'Watch',
-              "orderDetails": ' Titan Watch'
-            }
-          ]
-
-        }
-      ]
+      "data": []
     }
   }
 
   ngOnInit() {
-    this._CommonData.addData(this.listOfCustomer.data);
-    // this._CommonData.currentMessage.subscribe((shareData: any) => {
-    //   // if (shareData) {
-    //   //   shareData.forEach((element: any) => {
-    //   //     let customerDetails = [
-    //   //       {
-    //   //         personName: element.firstName,
-    //   //         city: element.city,
-    //   //         email: element.email,
-    //   //       }
-
-    //   //     ]
-    //   //     let order = [
-    //   //       {
-    //   //         "orderNo": 'A444',
-    //   //         "orderName": 'Mobile',
-    //   //         "orderDetails": ' Apple Mobile'
-    //   //       }
-    //   //     ]
-    //   //     this.listOfCustomer.data.push({ customerDetails, order });
-    //   //   });
-    //   // }
-    // });
+     this._CommonData.currentMessage.subscribe((shareData: any) => {
+       debugger;
+       this.listOfCustomer.data = shareData;
+     });
   }
 
   onNameClick(item: any) {

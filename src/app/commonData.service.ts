@@ -5,6 +5,65 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class CommonDataService {
+
+  RegisterData = [
+      {
+        "customerDetails": [
+          {
+            "personName": "Kailas joshi",
+            "selected": false,
+            "city": "pune",
+            "email": "kailas@gmail.com",
+
+          }
+        ],
+        "order": [
+          {
+            "orderNo": 'A111',
+            "orderName": 'Bag',
+            "orderDetails": ' Sky Bag'
+          }
+        ]
+      },
+      {
+        "customerDetails": [
+          {
+            "personName": "Pooja kokil",
+            "email": "Pooja@gmail.com",
+            "city": "kolhapur",
+
+            "selected": false,
+          }
+        ],
+        "order": [
+          {
+            "orderNo": 'A222',
+            "orderName": 'Bike',
+            "orderDetails": ' Pulsar Bag'
+          }
+        ]
+      },
+      {
+        "customerDetails": [
+          {
+
+            "personName": "Kalyani kasar",
+            "email": "Kalyani@gmail.com",
+            "city": "satara",
+            "selected": false,
+          }
+        ],
+        "order": [
+          {
+            "orderNo": 'A333',
+            "orderName": 'Watch',
+            "orderDetails": ' Titan Watch'
+          }
+        ]
+
+      }
+    ]
+
   private messageSource = new BehaviorSubject<any>('');
   public currentMessage: Observable<any> = this.messageSource.asObservable();
 
@@ -18,19 +77,17 @@ export class CommonDataService {
   private listSource = new BehaviorSubject<any>('');
   public listMessage: Observable<any> = this.listSource.asObservable();
 
-  RegisterData: any = [];
-
   constructor() {
-
+    this.messageSource.next(this.RegisterData);
   }
 
-  addData(data: any) {
+  addData(data: any[]) {
     this.RegisterData = [];
-    this.RegisterData = data;
+    this.RegisterData = this.RegisterData.concat(data);
     this.messageSource.next(this.RegisterData);
   }
   CommonData(data: any) {
-    
+    debugger;
     this.RegisterData.push(data);
     this.messageSource.next(this.RegisterData);
   }

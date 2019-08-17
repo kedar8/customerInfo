@@ -9,8 +9,6 @@ import {CommonDataService} from '../commonData.service';
 export class LoginComponent implements OnInit {
   userRegistration:UserRegistration;
  loginArray = {
-  "data": [
-    {
       "customerDetails": [
         {
           "personName": "",
@@ -27,9 +25,7 @@ export class LoginComponent implements OnInit {
           "orderDetails": ' Apple Mobile'
         }
       ]
-    }
-  ]
- }
+ };
 
   constructor(private router: Router, private _common: CommonDataService) {
     this.userRegistration = new UserRegistration();
@@ -42,7 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginBtnClick() {   
-    this._common.CommonData(this.userRegistration);
+    this.loginArray.customerDetails[0].personName = this.userRegistration.firstName;
+    this.loginArray.customerDetails[0].email = this.userRegistration.email;
+    this._common.CommonData(this.loginArray);
     this.router.navigate(['/home/customer']);
   }
 }
