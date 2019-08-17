@@ -81,48 +81,36 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._CommonData.currentMessage.subscribe((shareData: any) => {
-      debugger;
-      if (shareData) {
-        shareData.forEach((element: any) => {
-          let customerDetails = [
-            {
-              personName: element.firstName,
-              city: element.city,
-              email: element.email,
-            }
+    this._CommonData.addData(this.listOfCustomer.data);
+    // this._CommonData.currentMessage.subscribe((shareData: any) => {
+    //   // if (shareData) {
+    //   //   shareData.forEach((element: any) => {
+    //   //     let customerDetails = [
+    //   //       {
+    //   //         personName: element.firstName,
+    //   //         city: element.city,
+    //   //         email: element.email,
+    //   //       }
 
-          ]
-          let order = [
-            {
-              "orderNo": 'A444',
-              "orderName": 'Mobile',
-              "orderDetails": ' Apple Mobile'
-            }
-          ]
-          this.listOfCustomer.data.push({ customerDetails, order });
-        });
-      }
-    });
+    //   //     ]
+    //   //     let order = [
+    //   //       {
+    //   //         "orderNo": 'A444',
+    //   //         "orderName": 'Mobile',
+    //   //         "orderDetails": ' Apple Mobile'
+    //   //       }
+    //   //     ]
+    //   //     this.listOfCustomer.data.push({ customerDetails, order });
+    //   //   });
+    //   // }
+    // });
   }
 
   onNameClick(item: any) {
-    debugger;
+    this.orderData = [];
     this.options = true;
     this.fullData = this.listOfCustomer.data;
     this.orderData.push(item);
     this.onClick.emit(item);
-  }
-  deleteData(data: any) {
-    
-    this.fullData.forEach((element: any) => {
-      debugger;
-      if(element.selected === data.selected) {
-        debugger;
-        this.fullData.splice(element,1);
-      }
-    });
-    console.log('adadada', data);
-
   }
 }

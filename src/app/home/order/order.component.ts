@@ -17,28 +17,33 @@ export class OrderComponent implements OnInit {
   constructor(private _commonService: CommonDataService) { }
 
   ngOnInit() {
-    // console.log('order', data);
-
     this._commonService.orderMessage.subscribe((element: any) => {
-      this.orderFlag = true;
-      this.customerDetailsFlag = false;
-      this.customerOrder = element;
+      if (element) {
+        this.orderFlag = true;
+        this.customerDetailsFlag = false;
+        this.customerOrder = element;
 
+      } else {
+        this.orderFlag = false;
+        this.customerDetailsFlag = false;
+      }
 
     });
 
     this._commonService.customerDetailsMessage.subscribe((item: any) => {
-      this.customerDetailsFlag = true;
-      this.orderFlag = false;
-      this.customerDetailsData = item;
+      if (item) {
+
+        this.customerDetailsFlag = true;
+        this.orderFlag = false;
+        this.customerDetailsData = item;
+      } else {
+        this.customerDetailsFlag = false;
+        this.orderFlag = false;
+      }
 
 
     })
 
-
-
-  }
-  orderDetials(data: any) {
 
 
   }

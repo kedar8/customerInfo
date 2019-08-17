@@ -1,12 +1,12 @@
 <div style="padding-top: 21%;" *ngFor="let item of optionsData">
   <table style="width:100%; text-align: center;cursor: pointer;">
     <tr>
-      <td *ngFor="let orderItem of item.order">
+      <td >
         <h3 (click)="onOrderClick(item)"> Order</h3>
       </td>
     </tr>
     <tr>
-      <td *ngFor="let customerItem of item.customerDetails">
+      <td >
         <h3 (click)="onDetailsClick(item)"> Details</h3>
       </td>
     </tr>
@@ -14,7 +14,6 @@
   <table style="width:100%; text-align: center;cursor: pointer;">
     <tr>
       <td>
-        
         <amexio-button
           [label]="'Delete'"
           [type]="'theme-color'"

@@ -8,10 +8,10 @@ export class CommonDataService {
   private messageSource = new BehaviorSubject<any>('');
   public currentMessage: Observable<any> = this.messageSource.asObservable();
 
-  private orderSource = new BehaviorSubject<any>('');
+  private orderSource = new BehaviorSubject<any>(null);
   public orderMessage: Observable<any> = this.orderSource.asObservable();
 
-  private customerSource = new BehaviorSubject<any>('');
+  private customerSource = new BehaviorSubject<any>(null);
   public customerDetailsMessage: Observable<any> = this.customerSource.asObservable();
 
 
@@ -23,11 +23,15 @@ export class CommonDataService {
   constructor() {
 
   }
- 
+
+  addData(data: any) {
+    this.RegisterData = [];
+    this.RegisterData = data;
+    this.messageSource.next(this.RegisterData);
+  }
   CommonData(data: any) {
-    data.forEach(element => {
-      this.RegisterData.push(element);
-    });
+    
+    this.RegisterData.push(data);
     this.messageSource.next(this.RegisterData);
   }
   onOrderDataEvent(item: any) {
@@ -37,10 +41,14 @@ export class CommonDataService {
   onDetailsDataEvent(data: any) {
     this.customerSource.next(data);
   }
-
-
-  deleteData() {
-    
+  removeData(data: any) {
+    this.RegisterData.forEach((element: any, index: number) => {
+      if (data.customerDetails[0].personName === element.customerDetails[0].personName) {
+        this.RegisterData.splice(index, 1);
+        this.messageSource.next(this.RegisterData);
+      }
+    });
+    this.orderSource.next(null);
+    this.customerSource.next(null);
   }
-
 }

@@ -8,32 +8,43 @@ import {CommonDataService} from '../commonData.service';
 })
 export class LoginComponent implements OnInit {
   userRegistration:UserRegistration;
+ loginArray = {
+  "data": [
+    {
+      "customerDetails": [
+        {
+          "personName": "",
+          "selected": false,
+          "city": "",
+          "email": "",
 
-  RegisterData = [];
+        }
+      ],
+      "order": [
+        {
+          "orderNo": 'A444',
+          "orderName": 'Mobile',
+          "orderDetails": ' Apple Mobile'
+        }
+      ]
+    }
+  ]
+ }
+
   constructor(private router: Router, private _common: CommonDataService) {
     this.userRegistration = new UserRegistration();
   }
   ngOnInit() {
+   
   }
   onLoginNavClick() {
     this.router.navigate(['/home/dashboard']);
   }
 
-  onLoginBtnClick() {    
-
-    this.RegisterData.push(this.userRegistration);
-    this._common.CommonData(this.RegisterData);
+  onLoginBtnClick() {   
+    this._common.CommonData(this.userRegistration);
     this.router.navigate(['/home/customer']);
-    
   }
-  // keyPress(event: any) {
-  //   const pattern = /[0-9\+\-\ ]/;
-
-  //   let inputChar = String.fromCharCode(event.charCode);
-  //   if (event.keyCode != 8 && !pattern.test(inputChar)) {
-  //     event.preventDefault();
-  //   }
-  // }
 }
 
 export class UserRegistration {
